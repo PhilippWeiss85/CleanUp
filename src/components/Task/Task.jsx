@@ -9,6 +9,7 @@ function Task () {
                 <p>test</p>
                 <p>timer</p>
                 <p>status</p>
+                <p>responsible</p>
             </article>
         </section>
     );
