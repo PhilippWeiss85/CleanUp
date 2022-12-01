@@ -1,41 +1,36 @@
-import './App.css'
+
 import Task from './components/Task/Task'
 import Navigation from './components/Navigation/Navigation'
 
 
 const testArray = [
   {
+    id:"1",
     active: false,
-    icon: "url",
-    name: "Clean Kitchen",
-    cleanedLast: "xxx",
+    icon: "icon",
+    task: "Clean Kitchen",
+    cleanedLast: "03.03.2022",
     cleanedStatus: "done",
     responsible: "name",
+  },
+  {
+   id:"2",
+   active: true,
+   icon: "icon",
+   task: "Clean Bath",
+   cleanedLast: "02.02.2022",
+   cleanedStatus: "scheduled",
+   responsible: "name",
+   },
+   {
+   id:"3",
+   active: false,
+   icon: "icon",
+   task: "Clean Living Room",
+   cleanedLast: "01.01.2022",
+   cleanedStatus: "important",
+   responsible: "name",
     },
-    {
-      active: false,
-      icon: "url",
-      name: "Clean Kitchen",
-      cleanedLast: "xxx",
-      cleanedStatus: "done",
-      responsible: "name",
-      },
-      {
-        active: false,
-        icon: "url",
-        name: "Clean Kitchen",
-        cleanedLast: "xxx",
-        cleanedStatus: "done",
-        responsible: "name",
-        },
-        {
-          active: false,
-          icon: "url",
-          name: "Clean Kitchen",
-          cleanedLast: "xxx",
-          cleanedStatus: "done",
-          responsible: "name",
-          }
 ]
 
 
@@ -43,9 +38,9 @@ function App() {
   return (
     <div className="App">
       <Navigation/>
-      <h1>HALLO</h1>
+      <h1>Your current tasks</h1>
       {testArray.map((task) => {
-      return <Task active={task.active} icon={task.icon} name={task.name} cleanedLast={task.cleanedLast} cleanedStatus={task.cleanedStatus} responsible={task.responsible}></Task>})}
+      return<Task key={task.id} active={task.active} icon={task.icon} task={task.task} cleanedLast={task.cleanedLast} cleanedStatus={task.cleanedStatus} responsible={task.responsible}></Task>})}
     </div>
   )
 }

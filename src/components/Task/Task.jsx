@@ -1,17 +1,21 @@
 import "./Task.css"
 
-function Task ({active, icon, name, cleanedLast, cleanedStatus, responsible}) {
+function Task ({active, icon, task, cleanedLast, cleanedStatus, responsible}) {
     return ( 
         <section className="taskcontainer">
             <article className="taskcontainer-content ">
-                <button>activate</button>
-                <p>{active}</p>
-                <p>{icon}</p>
-                <p>{name}</p>
+                <p >{active === true ? "active" : "inactive"}</p>
+                <p>{task}</p>
                 <p>{cleanedLast}</p>
-                <p>{cleanedStatus}</p>
+                </article>
+                <article className="taskcontainer-content ">
                 <p>{responsible}</p>
+                <p>{cleanedStatus}</p>
+                <p>{icon}</p>
             </article>
+            <div className="buttoncontainer">
+            <button>activate</button>
+            </div>
         </section>
     );
 }
