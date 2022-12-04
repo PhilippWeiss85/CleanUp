@@ -1,6 +1,6 @@
-
 import Task from './components/Task/Task'
 import Navigation from './components/Navigation/Navigation'
+import { RiPlayListAddFill } from 'react-icons/ri'
 
 
 const testArray = [
@@ -36,12 +36,13 @@ const testArray = [
 
 function App() {
   return (
-    <div className="App">
+    <section className="App">
       <Navigation/>
       <h1>Your current tasks</h1>
       {testArray.map((task) => {
       return<Task key={task.id} active={task.active} icon={task.icon} task={task.task} cleanedLast={task.cleanedLast} cleanedStatus={task.cleanedStatus} responsible={task.responsible}></Task>})}
-    </div>
+      <RiPlayListAddFill/>
+    </section>
   )
 }
 

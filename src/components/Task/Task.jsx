@@ -1,7 +1,8 @@
 import "./Task.css"
+import Button from "../Button/Button";
 
 function Task ({active, icon, task, cleanedLast, cleanedStatus, responsible}) {
-    return ( 
+    return (
         <section className="taskcontainer">
             <article className="taskcontainer-content ">
                 <p >{active === true ? "active" : "inactive"}</p>
@@ -14,7 +15,7 @@ function Task ({active, icon, task, cleanedLast, cleanedStatus, responsible}) {
                 <p>{icon}</p>
             </article>
             <div className="buttoncontainer">
-            <button>activate</button>
+            <Button/>
             </div>
         </section>
     );
