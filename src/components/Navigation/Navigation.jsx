@@ -2,13 +2,17 @@ import "./Navigation.css"
 
 function Navigation() {
     return (
+        <>
         <nav className="navmenu">
             <ul>
-            <li className="navitem"><a href="#">Ongoing</a></li>           
-            <li className="navitem"><a href="#">Done</a></li>
+            <li className="navitem"><a href="#">HOME</a></li>  
+            <div className="navitem--container"></div>
+            <div className="navitem--separator"></div>
+            <li className="navitem"><a href="#">STATS</a></li>
             </ul>
-            <div className="navitem navitem--container"></div>
+       
         </nav>
+        </>
      );
 }
 
