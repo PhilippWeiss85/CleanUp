@@ -44,6 +44,17 @@ nav {
     left: 50vw / 2
 }
 
+
+.navitem--text {
+    height: 5rem;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem
+}
+
 .navitem--separator {
     border: 1px solid black;
 }
