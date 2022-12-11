@@ -26,7 +26,7 @@ nav {
 
 .navitem > a {
     padding: 25px;
-    font-size: 30px;
+    font-size: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
