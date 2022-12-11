@@ -1,3 +1,5 @@
+import "./app.css"
+
 import Header from './components/Header/Header'
 import Task from './components/Task/Task'
 import Navigation from './components/Navigation/Navigation'
@@ -36,13 +38,21 @@ const testArray = [
 
 function App() {
   return (
-    <section className="App">
+    <>
    <Header/>
-      <h1>Your current tasks</h1>
+   <section>
+      <h1>Hello UserName</h1>
+      </section>
+      <section>
+        <p>Hier kommt die Statistic hin</p>
+      </section>
+      <section>
+      <p>Es ist Zeit für...</p>
       {testArray.map((task) => {
       return<Task key={task.id} active={task.active} icon={task.icon} task={task.task} cleanedLast={task.cleanedLast} cleanedStatus={task.cleanedStatus} responsible={task.responsible}></Task>})}
+      </section>
       <Navigation/>
-    </section>
+    </>
   )
 }
 

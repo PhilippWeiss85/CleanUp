@@ -1,0 +1,7 @@
+section {
+    margin: 1rem;
+    background-color: lightgrey;
+    border-radius: 5px;
+    min-height: 100px;
+    padding: 0.2rem 0.5rem;
+}
