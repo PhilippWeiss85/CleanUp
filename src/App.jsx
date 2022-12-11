@@ -13,7 +13,7 @@ const testArray = [
     task: "Clean Kitchen",
     cleanedLast: "03.03.2022",
     cleanedStatus: "done",
-    responsible: "name",
+    responsible: "Anita",
   },
   {
    id:"2",
@@ -22,7 +22,7 @@ const testArray = [
    task: "Clean Bath",
    cleanedLast: "02.02.2022",
    cleanedStatus: "scheduled",
-   responsible: "name",
+   responsible: "Philipp",
    },
    {
    id:"3",
@@ -31,7 +31,7 @@ const testArray = [
    task: "Clean Living Room",
    cleanedLast: "01.01.2022",
    cleanedStatus: "important",
-   responsible: "name",
+   responsible: "Random",
     },
 ]
 

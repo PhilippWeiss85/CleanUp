@@ -4,29 +4,28 @@
     padding: 1rem;
     margin: 1rem auto;
     background-color: white;
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
-.taskcontainer-content {
-
-}
 
 .taskcontainer-content--left {
-    width: 100%;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    gap: 2rem;
+    flex-wrap: nowrap;
     border: 1px solid black;
     border-right: none;
-
+    padding-left: 1rem;
 }
 
 .taskcontainer-content--right {
-    width: 60%;
     display: grid;
     grid-template-areas: 
     "place person"
     "date dropdown";
+    align-items: center;
+    gap: 0 0.5rem;
     padding: 0.5rem;
     border: 1px solid black;
 }
