@@ -1,15 +1,24 @@
 import "./Task.css"
-import Button from "../Button/Button";
+import {useState} from "react"
 
 function Task ({active, task, cleanedLast, cleanedStatus, responsible}) {
+const [activeTask, setactiveTask] = useState(false)
+
+
+function toggleActive () {
+    console.log(activeTask)
+    setactiveTask(!activeTask)
+}
+
     return (
-        <section className="taskcontainer">
+        <section className={activeTask ? "taskcontainer--active" : "taskcontainer"}>
             <article className="taskcontainer-content taskcontainer-content--left">
                 <div>
-                <input type="checkbox" id="taskcompleted" name="taskcompleted"></input>
+                <input type="checkbox" id="taskcompleted" name="taskcompleted"
+                onClick={toggleActive}></input>
                 </div>
                 <aside>
-                <p>{task} {active === true ? "active" : "inactive"}</p>
+                <p>{task}</p>
                 </aside>
                 </article>
                 <article className="taskcontainer-content taskcontainer-content--right">
