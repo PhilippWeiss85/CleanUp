@@ -3,6 +3,9 @@ import "./app.css"
 import Header from './components/Header/Header'
 import Task from './components/Task/Task'
 import Navigation from './components/Navigation/Navigation'
+import CreateTaskPage from "./pages/CreateTaskPage"
+
+import { Routes, Route } from "react-router-dom"
 
 
 const testArray = [
@@ -39,8 +42,12 @@ const testArray = [
 function App() {
   return (
     <>
-   <Header/>
-   <section>
+  <Header/>
+   <Routes>
+    <Route path="/"
+    element={
+      <main>
+      <section>
       <h1>Hello UserName</h1>
       </section>
       <section>
@@ -50,9 +57,17 @@ function App() {
       <p>Es ist Zeit für...</p>
       {testArray.map((task) => {
       return<Task key={task.id} active={task.active} icon={task.icon} task={task.task} cleanedLast={task.cleanedLast} cleanedStatus={task.cleanedStatus} responsible={task.responsible}></Task>})}
-      </section>
-      <Navigation/>
-    </>
+    </section>
+    </main>
+    }/>
+    <Route path="/newtask"
+    element={
+      <CreateTaskPage/>
+    }
+    />
+    </Routes>
+    <Navigation/>
+    </>  
   )
 }
 

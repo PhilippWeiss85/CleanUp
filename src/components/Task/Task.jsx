@@ -6,7 +6,6 @@ const [activeTask, setactiveTask] = useState(false)
 
 
 function toggleActive () {
-    console.log(activeTask)
     setactiveTask(!activeTask)
 }
 
