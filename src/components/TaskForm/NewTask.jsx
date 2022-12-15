@@ -4,6 +4,9 @@ function CreateNewTask() {
     function submitHandler (event) {
         event.preventDefault()
 
+        const formData = new FormData(event.target)
+        const data = Object.fromEntries(formData)
+        console.log(data)
     }
 
 
@@ -23,10 +26,10 @@ function CreateNewTask() {
         </select>
         <label>Turnus</label>
         <div>        
-        <input type="number" className="turnus--number"></input>
-        <input type="date"></input>
+        <input type="number" name="number" id="number" className="turnus--number"></input>
+        <input type="date" name="date" id="date"></input>
         </div>
-        <button type="submit">Go</button>
+        <button type="submit" >Go</button>
       </form>
     </section>
   );

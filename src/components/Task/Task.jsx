@@ -1,7 +1,7 @@
 import "./Task.css"
 import {useState} from "react"
 
-function Task ({active, task, cleanedLast, cleanedStatus, responsible}) {
+function Task ({task, cleanedLast}) {
 const [activeTask, setactiveTask] = useState(false)
 
 
