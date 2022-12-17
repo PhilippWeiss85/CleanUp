@@ -1,8 +1,8 @@
 import CreateNewTask from "../components/TaskForm/NewTask";
 
-function CreateTaskPage() {
+function CreateTaskPage({addNewCleaningTask}) {
     return (
-        <CreateNewTask/> 
+        <CreateNewTask addNewCleaningTask={addNewCleaningTask}/> 
      );
 }
 
