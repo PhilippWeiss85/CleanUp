@@ -1,13 +1,13 @@
 import "./Task.css"
-import {useState} from "react"
-
-function Task ({task, cleanedLast}) {
-const [activeTask, setactiveTask] = useState(false)
+import { useState } from "react"
 
 
-function toggleActive () {
-    setactiveTask(!activeTask)
-}
+function Task ({toggleActive, task, room, cleanedStatus, responsible, date}) {
+    const [activeTask, setactiveTask] = useState(false)
+    function toggleActive () {
+        setactiveTask(!activeTask)
+      }
+      
 
     return (
         <section className={activeTask ? "taskcontainer--active" : "taskcontainer"}>
@@ -16,22 +16,24 @@ function toggleActive () {
                 <input type="checkbox" id="taskcompleted" name="taskcompleted"
                 onClick={toggleActive}></input>
                 </div>
-                <aside>
+                <div>
                 <p>{task}</p>
-                </aside>
+                <p>{room}</p>
+                <p>{cleanedStatus}</p>
+                </div>
                 </article>
                 <article className="taskcontainer-content taskcontainer-content--right">
                 <p>Wann?</p>
+                <p>{date}</p>
                 <p>Wer?</p>
-                <p>{cleanedLast}</p>
-                <form>
-                    <label htmlFor="name"></label>
-                    <select name="name" id="name">
-                        <option value="Anita">Anita</option>
-                        <option value="Philipp">Philipp</option>
+                <p>{responsible}</p>
+                    <label htmlFor="responsible"></label>
+                    <select name="responsible" id="responsible">
+                        <option value="placeholder">Select a person...</option>
+                        <option value="anita">Anita</option>
+                        <option value="philipp">Philipp</option>
                     </select>
 
-                </form>
                 </article>
         </section>
     );

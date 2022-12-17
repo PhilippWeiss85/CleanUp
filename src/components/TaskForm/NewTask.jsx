@@ -31,12 +31,18 @@ console.log(addNewCleaningTask)
           <option name="room" id="bath">Bath</option>
           <option name="room" id="bedroom">Bed Room</option>
         </select>
+        <label htmlFor="name"></label>
+                    <select name="name" id="name">
+                        <option value="placeholder">Select a person...</option>
+                        <option value="anita">Anita</option>
+                        <option value="philipp">Philipp</option>
+                    </select>
         <label>Turnus </label>
         <div>        
         <input type="number" name="turnus" id="turnus" className="turnus--number"></input>
         <input type="date" name="date" id="date"></input>
         </div>
-        <button type="submit" >Go</button>
+        <button type="submit">Go</button>
       </form>
     </section>
   );

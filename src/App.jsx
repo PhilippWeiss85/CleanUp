@@ -12,37 +12,29 @@ import { useState } from "react"
 
 const testArray = [
   {
-    id:nanoid(),
+    id: nanoid(),
     active: false,
-    icon: "icon",
     task: "Clean Kitchen",
-    cleanedLast: "03.03.2022",
+    room: "kitchen",
     cleanedStatus: "done",
     responsible: "Anita",
+    date:"01.01.2021",
   },
   {
    id:nanoid(),
-   active: true,
-   icon: "icon",
+   active: false,
    task: "Clean Bath",
-   cleanedLast: "02.02.2022",
+   room: "kitchen",
    cleanedStatus: "scheduled",
    responsible: "Philipp",
-   },
-   {
-   id:nanoid(),
-   active: false,
-   icon: "icon",
-   task: "Clean Living Room",
-   cleanedLast: "01.01.2022",
-   cleanedStatus: "important",
-   responsible: "Random",
-    },
+   date: "01.01.2021",
+   }
 ]
 
 
 function App() {
 const [cleaningTasks, setCleaningTasks] = useState(testArray)
+
 
 function addNewCleaningTask (task, room, repeat, date) {
   const newTask = [
@@ -56,6 +48,7 @@ function addNewCleaningTask (task, room, repeat, date) {
     ,...cleaningTasks];
     setCleaningTasks(newTask);
 }
+
 
 
   return (
@@ -74,7 +67,7 @@ function addNewCleaningTask (task, room, repeat, date) {
       <section>
       <p>Es ist Zeit für...</p>
       {cleaningTasks.map((task) => {
-      return<Task key={task.id} active={task.active} icon={task.icon} task={task.task} cleanedLast={task.cleanedLast} cleanedStatus={task.cleanedStatus} responsible={task.responsible}></Task>})}
+      return<Task key={task.id} task={task.task} room={task.room} cleanedStatus={task.cleanedStatus} responsible={task.responsible} date={task.date}></Task>})}
     </section>
     </main>
     }/>

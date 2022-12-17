@@ -12,7 +12,7 @@ function Navigation() {
             <li className="navitem"><Link to="/">HOME</Link></li>  
             <div className="navitem--container"><Link to="/newtask"><p className="navitem--text">+</p></Link></div>
             <div className="navitem--separator"></div>
-            <li className="navitem"><Link to="/statistics" end>STATS</Link></li>
+            <li className="navitem"><Link to="/statistics">STATS</Link></li>
             </ul>
         </nav>
         </>
