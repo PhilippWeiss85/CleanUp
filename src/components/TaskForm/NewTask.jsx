@@ -1,6 +1,8 @@
 import "./NewTask.css"
+import { useNavigate } from 'react-router-dom';
 
 function CreateNewTask({addNewCleaningTask}) {
+const navigate = useNavigate()
 
 console.log(addNewCleaningTask)
 
@@ -13,13 +15,14 @@ console.log(addNewCleaningTask)
 
 
 
-        addNewCleaningTask(data.task, data.room, data.turnus, data.date)
+        addNewCleaningTask(data.task, data.room, data.name, data.turnus, data.date)
+        navigate("/")
     }
 
 
 
   return (
-    <section>
+    <main>
       <h1>Moooore cleaning!</h1>
       <form className="formcontainer" onSubmit={submitHandler}>
         <label>Task</label>
@@ -34,8 +37,8 @@ console.log(addNewCleaningTask)
         <label htmlFor="name"></label>
                     <select name="name" id="name">
                         <option value="placeholder">Select a person...</option>
-                        <option value="anita">Anita</option>
-                        <option value="philipp">Philipp</option>
+                        <option value="Anita">Anita</option>
+                        <option value="Philipp">Philipp</option>
                     </select>
         <label>Turnus </label>
         <div>        
@@ -44,7 +47,7 @@ console.log(addNewCleaningTask)
         </div>
         <button type="submit">Go</button>
       </form>
-    </section>
+    </main>
   );
 }
 

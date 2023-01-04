@@ -36,12 +36,13 @@ function App() {
 const [cleaningTasks, setCleaningTasks] = useState(testArray)
 
 
-function addNewCleaningTask (task, room, repeat, date) {
+function addNewCleaningTask (task, room, responsible, repeat, date) {
   const newTask = [
     {
     id: nanoid(),
     task,
     room,
+    responsible,
     repeat,
     date,
     }
@@ -67,7 +68,7 @@ function addNewCleaningTask (task, room, repeat, date) {
       <section>
       <p>Es ist Zeit für...</p>
       {cleaningTasks.map((task) => {
-      return<Task key={task.id} task={task.task} room={task.room} cleanedStatus={task.cleanedStatus} responsible={task.responsible} date={task.date}></Task>})}
+      return<Task key={task.id} task={task.task} name={task.responsible} room={task.room} cleanedStatus={task.cleanedStatus} responsible={task.responsible} date={task.date}></Task>})}
     </section>
     </main>
     }/>
