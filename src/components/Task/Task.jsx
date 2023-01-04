@@ -26,11 +26,13 @@ function Task ({toggleActive, task, room, cleanedStatus, responsible, date}) {
                 <p>Wann?</p>
                 <p>{date}</p>
                 <p>Wer?</p>
+                <div>
                     <label htmlFor="responsible"></label>
                     <select name="responsible" id="responsible">
                         <option value="responsible">{responsible}</option>
                         {responsible === "Philipp" ? <option value="anita">Anita</option> : <option value="philipp">Philipp</option>}
                     </select>
+                    </div>
 
                 </article>
         </section>
