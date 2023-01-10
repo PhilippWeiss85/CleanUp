@@ -30,12 +30,13 @@
     background-color: white
 }
 
+.task--headline {
+    font-size: 1.3rem;
+    padding-left: 0.5rem;
+}
+
 .taskcontainer-content--right {
-    display: grid;
-    grid-template-areas: 
-    "place person"
-    "date dropdown";
-    align-items: center;
+
     gap: 0 0.5rem;
     padding: 0.5rem;
     border: 1px solid black;

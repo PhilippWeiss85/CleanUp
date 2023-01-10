@@ -1,8 +1,9 @@
 import "./Task.css"
+import TaskModal from "../Modal/TaskModal"
 import { useState } from "react"
 
 
-function Task ({toggleActive, task, room, cleanedStatus, responsible, date}) {
+function Task ({task, responsible, date}) {
     const [activeTask, setactiveTask] = useState(false)
     function toggleActive () {
         setactiveTask(!activeTask)
@@ -10,16 +11,17 @@ function Task ({toggleActive, task, room, cleanedStatus, responsible, date}) {
       
 
     return (
+        //<section className={activeTask ? "taskcontainer--active" : "taskcontainer"}>
+        
         <section className={activeTask ? "taskcontainer--active" : "taskcontainer"}>
+            {activeTask && <TaskModal toggleActive={toggleActive}/>}
             <article className="taskcontainer-content taskcontainer-content--left">
                 <div>
                 <input type="checkbox" id="taskcompleted" name="taskcompleted"
                 onClick={toggleActive}></input>
                 </div>
                 <div>
-                <p>{task}</p>
-                <p>{room}</p>
-                <p>{cleanedStatus}</p>
+                <p className="task--headline">{task}</p>
                 </div>
                 </article>
                 <article className="taskcontainer-content taskcontainer-content--right">
