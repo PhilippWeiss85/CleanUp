@@ -1,10 +1,13 @@
 import "./TaskModal.css"
 
-function TaskModal({toggleActive}) {
+function TaskModal({toggleActive, closeModal, task, responsible, date}) {
+ 
+
     return (
         <section className="taskmodaloverlay">
             <div className="taskmodal">
-            <h1>Task</h1>
+            <button className="taskmodal--close" onClick={closeModal}>close me</button>
+            <h1>{task}</h1>
             <label htmlFor="responsible">Wer?</label>
             <article className="taskmodal--section">
             <select className="modalinput" name="responsible" id="responsible">

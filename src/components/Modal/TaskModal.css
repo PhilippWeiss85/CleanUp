@@ -26,12 +26,17 @@
     border-radius: 10px;
 }
 
+.taskmodal--close {
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
 .modalinput {
     width: 70%;
 }
 
 .taskmodal--section {
- 
     display: flex;
     gap: 0.5rem;
 }
