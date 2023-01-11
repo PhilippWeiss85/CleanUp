@@ -11,8 +11,8 @@ function TaskModal({toggleActive, closeModal, task, responsible, date}) {
             <label htmlFor="responsible">Wer?</label>
             <article className="taskmodal--section">
             <select className="modalinput" name="responsible" id="responsible">
-                <option value="anita">Anita</option>
-                <option value="philipp">Philipp</option>
+                <option value={responsible}>{responsible}</option>
+                <option value={responsible === "Philipp" ? "Anita" : "Philipp"}>{responsible === "Philipp" ? "Anita" : "Philipp"}</option>
             </select>
             </article>
             <label>Wann erledigt?</label>
