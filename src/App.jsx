@@ -19,6 +19,8 @@ const testArray = [
     cleanedStatus: "done",
     responsible: "Anita",
     date:"01.01.2021",
+    recentlyDone: true,
+    lastCleanDate: "01.01.2022"
   },
   {
    id:nanoid(),
@@ -28,6 +30,8 @@ const testArray = [
    cleanedStatus: "scheduled",
    responsible: "Philipp",
    date: "01.01.2021",
+   recentlyDone: false,
+   lastCleanDate: "01.01.2022"
    }
 ]
 
@@ -50,6 +54,13 @@ function addNewCleaningTask (task, room, responsible, repeat, date) {
     setCleaningTasks(newTask);
 }
 
+const openTasks = cleaningTasks.filter(task => task.recentlyDone === false)
+const filteredTasks = cleaningTasks.filter(task => task.recentlyDone === true)
+
+
+function recentlyDoneTask () {
+
+}
 
 
   return (
@@ -67,9 +78,13 @@ function addNewCleaningTask (task, room, responsible, repeat, date) {
       </section>
       <section>
       <p>Es ist Zeit für...</p>
-      {cleaningTasks.map((task) => {
-      return<Task key={task.id} task={task.task} name={task.responsible} responsible={task.responsible} date={task.date}></Task>})}
+      {openTasks.map((task) => {
+      return<Task key={task.id} task={task.task} lastCleanDate={task.lastCleanDate} recentlyDone={task.recentlyDone} name={task.responsible} responsible={task.responsible} date={task.date}></Task>})}
     </section>
+    <section>
+      <p>Recently done</p>
+      {filteredTasks.map((task) => {return <Task key={task.id} task={task.task} lastCleanDate={task.lastCleanDate} recentlyDone={task.recentlyDone} name={task.responsible} responsible={task.responsible} date={task.date}></Task>})}
+      </section>
     </main>
     }/>
     <Route path="/newtask"
