@@ -1,6 +1,6 @@
 import "./TaskModal.css"
 
-function TaskModal({toggleActive, closeModal, task, responsible, date}) {
+function TaskModal({toggleActive, closeModal, task, responsible}) {
  
 
     return (
