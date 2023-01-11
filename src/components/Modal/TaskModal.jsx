@@ -1,7 +1,10 @@
 import "./TaskModal.css"
 
-function TaskModal({toggleActive, closeModal, task, responsible}) {
- 
+function TaskModal({toggleActive, closeModal, task, responsible, recentlyDone, completeTask, id}) {
+ function handleClick(id) {
+    toggleActive();
+    completeTask(id)
+ }
 
     return (
         <section className="taskmodaloverlay">
@@ -25,7 +28,7 @@ function TaskModal({toggleActive, closeModal, task, responsible}) {
             <input className="modalinput" type="number" step="10" min="0" max="1000"/>
             <p>Minuten</p>
             </article>
-            <button onClick={toggleActive} className="savebutton">save</button>
+            <button onClick={() => handleClick(id)} className="savebutton">save</button>
             </div>
         </section>
       );

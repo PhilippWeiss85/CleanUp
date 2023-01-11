@@ -19,7 +19,7 @@ const testArray = [
     cleanedStatus: "done",
     responsible: "Anita",
     date:"01.01.2021",
-    recentlyDone: true,
+    recentlyDone: false,
     lastCleanDate: "01.01.2022"
   },
   {
@@ -58,8 +58,15 @@ const openTasks = cleaningTasks.filter(task => task.recentlyDone === false)
 const filteredTasks = cleaningTasks.filter(task => task.recentlyDone === true)
 
 
-function recentlyDoneTask () {
-
+function completeTask (id) {
+  const updatedTasks = cleaningTasks.map(task => {
+  if(task.id === id) {
+      return {...task, recentlyDone: true}
+    } else {
+      return task
+    }
+  })
+  setCleaningTasks(updatedTasks)
 }
 
 
@@ -79,7 +86,7 @@ function recentlyDoneTask () {
       <section>
       <p>Es ist Zeit für...</p>
       {openTasks.map((task) => {
-      return<Task key={task.id} task={task.task} lastCleanDate={task.lastCleanDate} recentlyDone={task.recentlyDone} name={task.responsible} responsible={task.responsible} date={task.date}></Task>})}
+      return<Task key={task.id} id={task.id} task={task.task} lastCleanDate={task.lastCleanDate} completeTask={completeTask} recentlyDone={task.recentlyDone} name={task.responsible} responsible={task.responsible} date={task.date}></Task>})}
     </section>
     <section>
       <p>Recently done</p>
