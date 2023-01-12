@@ -3,7 +3,7 @@ import TaskModal from "../Modal/TaskModal"
 import { useState } from "react"
 
 
-function Task ({task, responsible, date, recentlyDone, completeTask, id}) {
+function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTime}) {
     const [activeTask, setactiveTask] = useState(false)
     const [modalActive, setModalActive] = useState(false)
 
@@ -12,16 +12,13 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id}) {
         setModalActive(!modalActive)
       }
 
-
       function closeModal () {
         setModalActive(false)
-
-
     }
 
     return (
         <section className={activeTask ? "taskcontainer--active" : "taskcontainer"}>
-            {modalActive && <TaskModal toggleActive={toggleActive} id={id} completeTask={completeTask} closeModal={closeModal} task={task} recentlyDone={recentlyDone} responsible={responsible} date={date}/>}
+            {modalActive && <TaskModal toggleActive={toggleActive} id={id} completeTask={completeTask} closeModal={closeModal} task={task} recentlyDone={recentlyDone} responsible={responsible} cleanTime={cleanTime} date={date}/>}
             <article className="taskcontainer-content taskcontainer-content--left">
                 <div>
                 <input type="checkbox" id="taskcompleted" name="taskcompleted"

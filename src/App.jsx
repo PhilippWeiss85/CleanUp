@@ -20,7 +20,7 @@ const testArray = [
     responsible: "Anita",
     date:"01.01.2021",
     recentlyDone: false,
-    lastCleanDate: "01.01.2022"
+    cleanTime: 0,
   },
   {
    id:nanoid(),
@@ -31,7 +31,7 @@ const testArray = [
    responsible: "Philipp",
    date: "01.01.2021",
    recentlyDone: false,
-   lastCleanDate: "01.01.2022"
+   cleanTime: 0,
    }
 ]
 
@@ -58,10 +58,10 @@ const openTasks = cleaningTasks.filter(task => task.recentlyDone === false)
 const filteredTasks = cleaningTasks.filter(task => task.recentlyDone === true)
 
 
-function completeTask (id) {
+function completeTask (id, responsible, date, cleanTime) {
   const updatedTasks = cleaningTasks.map(task => {
   if(task.id === id) {
-      return {...task, recentlyDone: true}
+      return {...task, recentlyDone: true, responsible, date, cleanTime }
     } else {
       return task
     }
@@ -86,7 +86,7 @@ function completeTask (id) {
       <section>
       <p>Es ist Zeit für...</p>
       {openTasks.map((task) => {
-      return<Task key={task.id} id={task.id} task={task.task} lastCleanDate={task.lastCleanDate} completeTask={completeTask} recentlyDone={task.recentlyDone} name={task.responsible} responsible={task.responsible} date={task.date}></Task>})}
+      return<Task key={task.id} id={task.id} task={task.task} cleanTime={task.cleanTime} lastCleanDate={task.lastCleanDate} completeTask={completeTask} recentlyDone={task.recentlyDone} name={task.responsible} responsible={task.responsible} date={task.date}></Task>})}
     </section>
     <section>
       <p>Recently done</p>
