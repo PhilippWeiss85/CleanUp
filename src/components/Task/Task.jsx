@@ -17,7 +17,7 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
     }
 
     return (
-        <section className={activeTask ? "taskcontainer--active" : "taskcontainer"}>
+        <section className="taskcontainer">
             {modalActive && <TaskModal toggleActive={toggleActive} id={id} completeTask={completeTask} closeModal={closeModal} task={task} recentlyDone={recentlyDone} responsible={responsible} cleanTime={cleanTime} date={date}/>}
             <article className="taskcontainer-content taskcontainer-content--left">
                 <div>
@@ -29,7 +29,7 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
                 </div>
                 </article>
                 <article className="taskcontainer-content taskcontainer-content--right">
-                <p>Wann?</p>
+                {recentlyDone !== true ? <p>Steht an am:</p> : <p>Zuletzt geputzt am:</p>}
                 <p>{date}</p>
                 <p>Wer?</p>
                 <div>

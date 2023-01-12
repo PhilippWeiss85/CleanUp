@@ -1,13 +1,14 @@
 import "./TaskModal.css"
 
-function TaskModal({toggleActive, closeModal, task, responsible, recentlyDone, completeTask, id, date, cleanTime}) {
+function TaskModal({toggleActive, closeModal, task, responsible, completeTask, id}) {
 
 
  function handleSubmit(event, id) {
     event.preventDefault()
     const formData = new FormData(event.target)
     const data = Object.fromEntries(formData)
-    console.log(data)
+    const thisDate = new Date(data.date)
+    
 
     toggleActive()
     completeTask(id, data.responsible, data.date, data.cleanTime)
