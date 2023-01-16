@@ -22,9 +22,9 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
             <article className="taskcontainer-content taskcontainer-content--left">
                 <div>
                 {recentlyDone === true ?
-                <input type="checkbox"  id="taskcompleted" name="taskcompleted" checked></input>
+                <input type="checkbox"  id="taskcompleted" name="taskcompleted" defaultChecked></input>
                 :
-                <input type="checkbox"  id="taskcompleted" name="taskcompleted"  onClick={toggleActive}></input>
+                <input type="checkbox"  id="taskcompleted" name="taskcompleted" onClick={toggleActive}></input>
                 }
                 </div>
                 <div>
@@ -32,10 +32,10 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
                 </div>
                 </article>
                 <article className="taskcontainer-content taskcontainer-content--right">
-                {recentlyDone !== true ? <p>Steht an am:</p> : <p>Geputzt am:</p>}
+                {recentlyDone !== true ? <p>Steht an:</p> : <p>Geputzt am:</p>}
                 <p>{date}</p>
                 <p>Wer?</p>
-                <div>
+                <div className="task--inputName">
                     <label htmlFor="responsible"></label>
                     <select name="responsible" id="responsible">
                         <option value="responsible">{responsible}</option>
