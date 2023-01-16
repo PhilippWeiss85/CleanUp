@@ -28,11 +28,11 @@ function TaskModal({toggleActive, closeModal, task, responsible, completeTask, i
             <article className="taskmodal--section">
             <input id="date" name="date" required className="modalinput" type="date"/>
             </article>
-            <label htmlFor="timetoclean">Wie lange gebraucht?</label>
+            <label htmlFor="timetoclean">Wie lange gebraucht (in Min)?</label>
             <article className="taskmodal--section">
             <input name="timetoclean" id="timetoclean" required className="modalinput" type="number" step="10" min="0" max="1000"/>
-            <p>Minuten</p>
             </article>
+            
             <button className="savebutton" type="submit">save</button>
             </form>
         </section>

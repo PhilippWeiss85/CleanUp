@@ -18,22 +18,25 @@
 
 .taskmodal {
     position: relative;
-    background-color: red;
+    background-color: lightgray;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    width: 75%;
+    align-items: center;
     border-radius: 10px;
+    width: 65%;
+    border: 3px solid black;
 }
 
 .taskmodal--close {
     position: absolute;
-    top: 0;
-    right: 20px;
+    top: -25px;
+    right: 5px;
 }
 
 .modalinput {
-    width: 70%;
+    background-color: grey;
+    color: white;
 }
 
 .taskmodal--section {
