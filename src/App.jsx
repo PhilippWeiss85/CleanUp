@@ -8,7 +8,7 @@ import CreateTaskPage from "./pages/CreateTaskPage"
 
 import { Routes, Route } from "react-router-dom"
 import { useState } from "react"
-
+import { useEffect } from "react"
 
 const testArray = [
   {
@@ -30,7 +30,7 @@ const testArray = [
    cleanedStatus: "scheduled",
    responsible: "Philipp",
    date: "2021-01-01",
-   recentlyDone: true,
+   recentlyDone: false,
    cleanTime: 0,
    }
 ]
@@ -39,6 +39,9 @@ const testArray = [
 function App() {
 const [cleaningTasks, setCleaningTasks] = useState(testArray)
 
+useEffect(() => {
+  reapplyTask()
+}, [])
 
 function addNewCleaningTask (task, room, responsible, repeat, date) {
   const newTask = [
@@ -61,13 +64,43 @@ const filteredTasks = cleaningTasks.filter(task => task.recentlyDone === true)
 
 const today = new Date().getTime()
 const oneDay = 86400000
-const oneWeek = oneDay *7
+const oneWeek = oneDay * 7
 
-/* das geht so nicht :/
+
+
+console.log(today)
+console.log(oneDay)
+console.log(oneWeek)
+
 const datum = cleaningTasks.map(task => {
-  reapplyTask(task.id, task.date)
+  const taskDate = task.date
+    return taskDate
 })
 
+
+//console.log("datum", datum)
+//const test3 = new Date(datum[0]).getTime()
+//console.log("test3", test3)
+
+function reapplyTask() {
+const taskRenewal = cleaningTasks.map(task => {
+  
+  const taskDate = task.date
+  const zeit = new Date(taskDate).getTime()
+  console.log("zeit", zeit)
+  console.log("today", today)
+  console.log("week", oneWeek)
+  console.log("rechnung", today - zeit)
+  if(today - zeit >= oneWeek) {
+    console.log("hallo")
+    return {...task, recentlyDone: false}
+  }
+})
+}
+
+
+
+/* das geht so nicht :/
 function reapplyTask(id, date) {
   const reapplyTask = cleaningTasks.find(task => {
    if(id === task.id && today - new Date(date).getTime() >= oneWeek) {
