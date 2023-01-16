@@ -7,8 +7,6 @@ function TaskModal({toggleActive, closeModal, task, responsible, completeTask, i
     event.preventDefault()
     const formData = new FormData(event.target)
     const data = Object.fromEntries(formData)
-    const thisDate = new Date(data.date)
-    
 
     toggleActive()
     completeTask(id, data.responsible, data.date, data.cleanTime)

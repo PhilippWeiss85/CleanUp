@@ -30,7 +30,7 @@ const testArray = [
    cleanedStatus: "scheduled",
    responsible: "Philipp",
    date: "2021-01-01",
-   recentlyDone: false,
+   recentlyDone: true,
    cleanTime: 0,
    }
 ]
@@ -60,21 +60,23 @@ const filteredTasks = cleaningTasks.filter(task => task.recentlyDone === true)
 
 
 const today = new Date().getTime()
-
 const oneDay = 86400000
 const oneWeek = oneDay *7
 
+/* das geht so nicht :/
+const datum = cleaningTasks.map(task => {
+  reapplyTask(task.id, task.date)
+})
 
-// das geht so nicht :/
 function reapplyTask(id, date) {
   const reapplyTask = cleaningTasks.find(task => {
-   if(task.id === id && today - parseInt(date).getTime() >= oneWeek) {
-      console.log(reapplyTask)
+   if(id === task.id && today - new Date(date).getTime() >= oneWeek) {
+    return task
     }
   })
+  console.log(reapplyTask)
 } 
-reapplyTask()
-
+*/
 
 function completeTask (id, responsible, date, cleanTime) {
   const updatedTasks = cleaningTasks.map(task => {
@@ -86,6 +88,18 @@ function completeTask (id, responsible, date, cleanTime) {
   })
   setCleaningTasks(updatedTasks)
 }
+
+function reopenTask (id, responsible, date, cleanTime) {
+  const reopenedTask = cleaningTasks.map((task) => {
+    if(task.id === id) {
+      return {...task, recentlyDone: false, responsible, date}
+    } else {
+      return task
+    }
+  })
+  setCleaningTasks(reopenedTask)
+}
+
 
 
   return (

@@ -8,12 +8,12 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
     const [modalActive, setModalActive] = useState(false)
 
     function toggleActive () {
-        setactiveTask(!activeTask)
-        setModalActive(!modalActive)
-      }
+        setactiveTask(true)
+        setModalActive(true)
+    } 
 
       function closeModal () {
-        setModalActive(false)
+        setModalActive(!modalActive)
     }
 
     return (
@@ -21,15 +21,18 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
             {modalActive && <TaskModal toggleActive={toggleActive} id={id} completeTask={completeTask} closeModal={closeModal} task={task} recentlyDone={recentlyDone} responsible={responsible} cleanTime={cleanTime} date={date}/>}
             <article className="taskcontainer-content taskcontainer-content--left">
                 <div>
-                <input type="checkbox" id="taskcompleted" name="taskcompleted"
-                onClick={toggleActive}></input>
+                {recentlyDone === true ?
+                <input type="checkbox"  id="taskcompleted" name="taskcompleted" checked></input>
+                :
+                <input type="checkbox"  id="taskcompleted" name="taskcompleted"  onClick={toggleActive}></input>
+                }
                 </div>
                 <div>
                 <p className="task--headline">{task}</p>
                 </div>
                 </article>
                 <article className="taskcontainer-content taskcontainer-content--right">
-                {recentlyDone !== true ? <p>Steht an am:</p> : <p>Zuletzt geputzt am:</p>}
+                {recentlyDone !== true ? <p>Steht an am:</p> : <p>Geputzt am:</p>}
                 <p>{date}</p>
                 <p>Wer?</p>
                 <div>
