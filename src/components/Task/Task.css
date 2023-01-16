@@ -33,20 +33,6 @@
     grid-area: left;
 }
 
-@media (min-width: 360px) and (max-width: 800px) {
-    .taskcontainer-content--left {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-wrap: nowrap;
-        border: 1px solid black;
-        border-right: none;
-        padding-left: 1rem;
-        background-color: white;
-        grid-area: left;
-        width: 120px;
-    }
-}
 
 .task--headline {
     font-size: 1.3rem;
