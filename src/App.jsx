@@ -29,8 +29,8 @@ const testArray = [
    room: "kitchen",
    cleanedStatus: "scheduled",
    responsible: "Philipp",
-   date: "2021-01-01",
-   recentlyDone: false,
+   date: "2021-01-12",
+   recentlyDone: true,
    cleanTime: 0,
    }
 ]
@@ -78,13 +78,9 @@ const datum = cleaningTasks.map(task => {
 })
 
 
-//console.log("datum", datum)
-//const test3 = new Date(datum[0]).getTime()
-//console.log("test3", test3)
 
 function reapplyTask() {
 const taskRenewal = cleaningTasks.map(task => {
-  
   const taskDate = task.date
   const zeit = new Date(taskDate).getTime()
   console.log("zeit", zeit)
@@ -94,8 +90,11 @@ const taskRenewal = cleaningTasks.map(task => {
   if(today - zeit >= oneWeek) {
     console.log("hallo")
     return {...task, recentlyDone: false}
-  }
+  } else {
+    return {...task}
+  } 
 })
+setCleaningTasks(taskRenewal)
 }
 
 
@@ -125,6 +124,7 @@ function completeTask (id, responsible, date, cleanTime) {
 function reopenTask (id, responsible, date, cleanTime) {
   const reopenedTask = cleaningTasks.map((task) => {
     if(task.id === id) {
+      console.log(task.task)
       return {...task, recentlyDone: false, responsible, date}
     } else {
       return task
