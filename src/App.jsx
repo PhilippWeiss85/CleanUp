@@ -29,7 +29,7 @@ const testArray = [
    room: "kitchen",
    cleanedStatus: "scheduled",
    responsible: "Philipp",
-   date: "2023-01-12",
+   date: "2023-01-13",
    recentlyDone: true,
    cleanTime: 0,
    }
@@ -75,15 +75,9 @@ const taskRenewal = cleaningTasks.map(task => {
   const oneDay = 86400000
   const oneWeek = oneDay * 7
   const taskDateInMs = new Date(taskDate).getTime()
-  console.log("zeit", taskDateInMs)
-  console.log("today", today)
-  console.log("week", oneWeek)
-  console.log("rechnung", today - taskDateInMs)
   if(today - taskDateInMs >= oneWeek) {
-    console.log("länger als 1 Woche vergangen", task)
     return {...task, recentlyDone: false}
   } else {
-    console.log("kürzer als 1 Woche vergangen", task)
     return {...task, recentlyDone: true}
   } 
 })
