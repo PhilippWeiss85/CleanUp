@@ -18,7 +18,7 @@ const testArray = [
     room: "kitchen",
     cleanedStatus: "done",
     responsible: "Anita",
-    date:"2021-01-01",
+    date:"2023-01-01",
     recentlyDone: false,
     cleanTime: 0,
   },
@@ -29,7 +29,7 @@ const testArray = [
    room: "kitchen",
    cleanedStatus: "scheduled",
    responsible: "Philipp",
-   date: "2021-01-12",
+   date: "2023-01-12",
    recentlyDone: true,
    cleanTime: 0,
    }
@@ -39,9 +39,11 @@ const testArray = [
 function App() {
 const [cleaningTasks, setCleaningTasks] = useState(testArray)
 
+
 useEffect(() => {
   reapplyTask()
 }, [])
+
 
 function addNewCleaningTask (task, room, responsible, repeat, date) {
   const newTask = [
@@ -62,53 +64,39 @@ const filteredTasks = cleaningTasks.filter(task => task.recentlyDone === true)
 
 
 
-const today = new Date().getTime()
-const oneDay = 86400000
-const oneWeek = oneDay * 7
 
-
-
-console.log(today)
-console.log(oneDay)
-console.log(oneWeek)
-
-const datum = cleaningTasks.map(task => {
-  const taskDate = task.date
-    return taskDate
-})
 
 
 
 function reapplyTask() {
 const taskRenewal = cleaningTasks.map(task => {
   const taskDate = task.date
-  const zeit = new Date(taskDate).getTime()
-  console.log("zeit", zeit)
+
+  const longToday = new Date()
+  const longTaskDate = new Date(task.date)
+
+console.log(longToday)
+console.log(longTaskDate)
+
+  const today = new Date().getTime()
+  const oneDay = 86400000
+  const oneWeek = oneDay * 7
+  const taskDateInMs = new Date(taskDate).getTime()
+  console.log("zeit", taskDateInMs)
   console.log("today", today)
   console.log("week", oneWeek)
-  console.log("rechnung", today - zeit)
-  if(today - zeit >= oneWeek) {
-    console.log("hallo")
+  console.log("rechnung", today - taskDateInMs)
+  if(today - taskDateInMs >= oneWeek) {
+    console.log("länger als 1 Woche vergangen", task)
     return {...task, recentlyDone: false}
   } else {
-    return {...task}
+    console.log("kürzer als 1 Woche vergangen", task)
+    return {...task, recentlyDone: true}
   } 
 })
 setCleaningTasks(taskRenewal)
 }
 
-
-
-/* das geht so nicht :/
-function reapplyTask(id, date) {
-  const reapplyTask = cleaningTasks.find(task => {
-   if(id === task.id && today - new Date(date).getTime() >= oneWeek) {
-    return task
-    }
-  })
-  console.log(reapplyTask)
-} 
-*/
 
 function completeTask (id, responsible, date, cleanTime) {
   const updatedTasks = cleaningTasks.map(task => {
@@ -119,18 +107,6 @@ function completeTask (id, responsible, date, cleanTime) {
     }
   })
   setCleaningTasks(updatedTasks)
-}
-
-function reopenTask (id, responsible, date, cleanTime) {
-  const reopenedTask = cleaningTasks.map((task) => {
-    if(task.id === id) {
-      console.log(task.task)
-      return {...task, recentlyDone: false, responsible, date}
-    } else {
-      return task
-    }
-  })
-  setCleaningTasks(reopenedTask)
 }
 
 
