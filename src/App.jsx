@@ -71,13 +71,6 @@ const filteredTasks = cleaningTasks.filter(task => task.recentlyDone === true)
 function reapplyTask() {
 const taskRenewal = cleaningTasks.map(task => {
   const taskDate = task.date
-
-  const longToday = new Date()
-  const longTaskDate = new Date(task.date)
-
-console.log(longToday)
-console.log(longTaskDate)
-
   const today = new Date().getTime()
   const oneDay = 86400000
   const oneWeek = oneDay * 7
