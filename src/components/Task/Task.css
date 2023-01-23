@@ -4,6 +4,7 @@
     padding: 0.5rem;
     margin: 1rem auto;
     background-color: white;
+    position: relative;
 }
 
 .taskcontainer--active {
@@ -21,7 +22,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     border-right: none;
     padding-left: 1rem;
     background-color: white;
@@ -37,7 +38,7 @@
 .taskcontainer-content--right {
     gap: 0 0.5rem;
     padding: 0.5rem;
-    border: 1px solid black;
+  
     background-color: white;
     display: grid;
     grid-template-columns: repeat(2, 1fr)
@@ -47,4 +48,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+
+.taskcontainer--delete {
+    position: absolute;
+    right: 10px;
+    top: -20px;
 }

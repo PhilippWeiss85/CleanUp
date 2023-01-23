@@ -1,3 +1,7 @@
-button {
+.activate-button {
     background-color: grey;
+}
+
+.delete-button {
+    background-color: red;
 }

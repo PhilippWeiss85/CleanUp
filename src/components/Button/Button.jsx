@@ -4,7 +4,7 @@ import "./Button.css"
 function Button() {
 
     return ( 
-        <button>Activate</button>
+        <button className="activate-button">Activate</button>
      );
 }
 

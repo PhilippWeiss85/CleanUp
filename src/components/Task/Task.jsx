@@ -1,9 +1,10 @@
 import "./Task.css"
 import TaskModal from "../Modal/TaskModal"
+import DeleteButton from "../Button/DeleteButton"
 import { useState } from "react"
 
 
-function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTime}) {
+function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTime, deleteTask}) {
     const [activeTask, setactiveTask] = useState(false)
     const [modalActive, setModalActive] = useState(false)
 
@@ -16,10 +17,12 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
         setModalActive(!modalActive)
     }
 
+
     return (
         <section className="taskcontainer">
             {modalActive && <TaskModal toggleActive={toggleActive} id={id} completeTask={completeTask} closeModal={closeModal} task={task} recentlyDone={recentlyDone} responsible={responsible} cleanTime={cleanTime} date={date}/>}
             <article className="taskcontainer-content taskcontainer-content--left">
+                <div className="taskcontainer--delete"><DeleteButton deleteTask={deleteTask} id={id}>Test</DeleteButton></div>
                 <div>
                 {recentlyDone === true ?
                 <input type="checkbox"  id="taskcompleted" name="taskcompleted" defaultChecked></input>
