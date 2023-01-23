@@ -10,39 +10,46 @@ import { Routes, Route } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
 
-const testArray = [
-  {
-    id: nanoid(),
-    active: false,
-    task: "Clean Kitchen",
-    room: "kitchen",
-    cleanedStatus: "done",
-    responsible: "Anita",
-    date:"2023-01-01",
-    recentlyDone: false,
-    cleanTime: 0,
-  },
-  {
-   id:nanoid(),
-   active: false,
-   task: "Clean Bath",
-   room: "kitchen",
-   cleanedStatus: "scheduled",
-   responsible: "Philipp",
-   date: "2023-01-13",
-   recentlyDone: true,
-   cleanTime: 0,
-   }
-]
 
+
+const useLocalStorage = (storageKey, fallbackState) => {
+  const [value, setValue] = useState(
+    JSON.parse(localStorage.getItem(storageKey)) ?? fallbackState
+  );
+
+  useEffect(() => {
+    localStorage.setItem(storageKey, JSON.stringify(value))
+  }, [value, storageKey])
+
+  return [value, setValue]
+}
 
 function App() {
-const [cleaningTasks, setCleaningTasks] = useState(testArray)
+const [cleaningTasks, setCleaningTasks] = useLocalStorage("task", [])
+
+
+const today = new Date().getTime()
+const oneDay = 86400000
+const oneWeek = oneDay * 7
 
 
 useEffect(() => {
-  reapplyTask()
-}, [])
+  reapplyTask()}, [])
+  
+
+function reapplyTask() {
+const taskRenewal = cleaningTasks.map(task => {
+  const taskDate = task.date
+  const taskDateInMs = new Date(taskDate).getTime()
+  if(today - taskDateInMs > oneWeek) {
+    return {...task, recentlyDone: false}
+  } else {
+    return {...task, recentlyDone: true}
+  } 
+})
+setCleaningTasks(taskRenewal)
+}
+
 
 
 function addNewCleaningTask (task, room, responsible, repeat, date) {
@@ -54,6 +61,7 @@ function addNewCleaningTask (task, room, responsible, repeat, date) {
     responsible,
     repeat,
     date,
+    recentlyDone: false
     }
     ,...cleaningTasks];
     setCleaningTasks(newTask);
@@ -66,25 +74,6 @@ const filteredTasks = cleaningTasks.filter(task => task.recentlyDone === true)
 
 
 
-
-
-function reapplyTask() {
-const taskRenewal = cleaningTasks.map(task => {
-  const taskDate = task.date
-  const today = new Date().getTime()
-  const oneDay = 86400000
-  const oneWeek = oneDay * 7
-  const taskDateInMs = new Date(taskDate).getTime()
-  if(today - taskDateInMs >= oneWeek) {
-    return {...task, recentlyDone: false}
-  } else {
-    return {...task, recentlyDone: true}
-  } 
-})
-setCleaningTasks(taskRenewal)
-}
-
-
 function completeTask (id, responsible, date, cleanTime) {
   const updatedTasks = cleaningTasks.map(task => {
   if(task.id === id) {
@@ -95,7 +84,6 @@ function completeTask (id, responsible, date, cleanTime) {
   })
   setCleaningTasks(updatedTasks)
 }
-
 
 
   return (

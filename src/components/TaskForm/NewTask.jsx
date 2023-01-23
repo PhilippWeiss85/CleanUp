@@ -8,13 +8,9 @@ console.log(addNewCleaningTask)
 
     function submitHandler (event) {
         event.preventDefault()
-
         const formData = new FormData(event.target)
         const data = Object.fromEntries(formData)
         console.log(data);
-
-
-
         addNewCleaningTask(data.task, data.room, data.name, data.turnus, data.date)
         navigate("/")
     }
