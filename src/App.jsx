@@ -40,7 +40,7 @@ function App() {
       if (today - taskDateInMs > oneWeek) {
         return { ...task, recentlyDone: false };
       } else {
-        return { ...task, recentlyDone: true };
+        return { ...task};
       }
     });
     setCleaningTasks(taskRenewal);
@@ -70,8 +70,6 @@ function App() {
 
   function deleteTask (id) {
     const updatedTasks = cleaningTasks.filter(task => {
-      console.log("task id", task.id)
-      console.log("id", id)
       return task.id !== id
     })
     setCleaningTasks(updatedTasks)
@@ -115,6 +113,7 @@ function App() {
                       lastCleanDate={task.lastCleanDate}
                       completeTask={completeTask}
                       recentlyDone={task.recentlyDone}
+                      room={task.room}
                       name={task.responsible}
                       responsible={task.responsible}
                       date={task.date}
@@ -123,6 +122,7 @@ function App() {
                   );
                 })}
               </section>
+              <div className="separator"></div>
               <section>
                 <p>Recently done</p>
                 {filteredTasks.map((task) => {
@@ -136,6 +136,7 @@ function App() {
                       name={task.responsible}
                       responsible={task.responsible}
                       date={task.date}
+                      room={task.room}
                       deleteTask={deleteTask}
                     ></Task>
                   );

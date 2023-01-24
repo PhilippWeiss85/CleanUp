@@ -9,3 +9,10 @@ section {
     min-height: 100px;
     padding: 0.2rem 0.5rem;
 }
+
+.separator {
+    height: 5px;
+    width: 80%;
+    background-color: black;
+    margin: 0 auto;
+}

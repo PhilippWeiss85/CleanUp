@@ -2,14 +2,16 @@ import "./Task.css"
 import TaskModal from "../Modal/TaskModal"
 import DeleteButton from "../Button/DeleteButton"
 import { useState } from "react"
+import { IconContext } from "react-icons";
+import { TiDeleteOutline, TiTickOutline,TiStopwatch } from 'react-icons/ti';
 
 
-function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTime, deleteTask}) {
-    const [activeTask, setactiveTask] = useState(false)
+
+function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTime, deleteTask, room}) {
     const [modalActive, setModalActive] = useState(false)
 
     function toggleActive () {
-        setactiveTask(true)
+
         setModalActive(true)
     } 
 
@@ -20,18 +22,16 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
 
     return (
         <section className="taskcontainer">
-            {modalActive && <TaskModal toggleActive={toggleActive} id={id} completeTask={completeTask} closeModal={closeModal} task={task} recentlyDone={recentlyDone} responsible={responsible} cleanTime={cleanTime} date={date}/>}
+            {modalActive && <TaskModal toggleActive={toggleActive} id={id} completeTask={completeTask} closeModal={closeModal} task={task} recentlyDone={recentlyDone} responsible={responsible} cleanTime={cleanTime} date={date} room={room}/>}
             <article className="taskcontainer-content taskcontainer-content--left">
-                <div className="taskcontainer--delete"><DeleteButton deleteTask={deleteTask} id={id}>Test</DeleteButton></div>
-                <div>
+            <IconContext.Provider value={{ className: 'react-icons' }}><div className="taskcontainer--delete"><DeleteButton deletetask={deleteTask} id={id}><TiDeleteOutline/></DeleteButton></div></IconContext.Provider>
+                <div className="taskcontainer-content--header">
                 {recentlyDone === true ?
-                <input type="checkbox"  id="taskcompleted" name="taskcompleted" defaultChecked></input>
+                <IconContext.Provider value={{ className: 'react-icons' }}><TiTickOutline/></IconContext.Provider> 
                 :
-                <input type="checkbox"  id="taskcompleted" name="taskcompleted" onClick={toggleActive}></input>
+                <IconContext.Provider value={{ className: 'react-icons' }}><TiStopwatch/></IconContext.Provider> 
                 }
-                </div>
-                <div>
-                <p className="task--headline">{task}</p>
+                <p className="task--headline">{room}<br></br>{task}</p>
                 </div>
                 </article>
                 <article className="taskcontainer-content taskcontainer-content--right">
@@ -45,7 +45,7 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
                         {responsible === "Philipp" ? <option value="anita">Anita</option> : <option value="philipp">Philipp</option>}
                     </select>
                     </div>
-
+                    {recentlyDone === false ? <input type="checkbox" name="checkbox" id="checkbox" className="taskcontainer--done"  onClick={toggleActive}></input>  : <></>}
                 </article>
         </section>
     );

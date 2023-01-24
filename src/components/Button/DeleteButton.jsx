@@ -1,8 +1,8 @@
 import "./Button.css"
 
-function DeleteButton ({children, deleteTask, id}) {
+function DeleteButton ({children, deletetask, id}) {
     return ( 
-        <button className="delete-button" onClick={() => deleteTask(id)}>{children}</button>
+        <button className="delete-button" onClick={() => deletetask(id)}>{children}</button>
      );
 }
 

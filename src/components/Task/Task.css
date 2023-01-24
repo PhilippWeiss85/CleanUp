@@ -1,10 +1,13 @@
 .taskcontainer {
-    border: 1px solid black;
-    box-shadow: 1px 2px 1px black;
     padding: 0.5rem;
     margin: 1rem auto;
     background-color: white;
     position: relative;
+}
+
+.taskcontainer-content--header {
+    display: flex;
+    align-items: center;
 }
 
 .taskcontainer--active {
@@ -24,25 +27,25 @@
     flex-wrap: nowrap;
     border-bottom: 1px solid black;
     border-right: none;
-    padding-left: 1rem;
+    padding-left: 0.2rem;
     background-color: white;
    
 }
 
 
 .task--headline {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding-left: 0.5rem;
+    display: flex;
 }
 
 .taskcontainer-content--right {
-    gap: 0 0.5rem;
     padding: 0.5rem;
-  
     background-color: white;
     display: grid;
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: repeat(2, 35%)
 }
+
 
 .task--inputName {
     display: flex;
@@ -55,4 +58,16 @@
     position: absolute;
     right: 10px;
     top: -20px;
+}
+
+.taskcontainer--done {
+    position: absolute;
+    right: 15px;
+    bottom: 25px;
+    height: 30px;
+    width: 30px;
+}
+
+.react-icons {
+    font-size: 2em;
 }
