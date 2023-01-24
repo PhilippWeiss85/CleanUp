@@ -37,14 +37,15 @@ function Task ({task, responsible, date, recentlyDone, completeTask, id, cleanTi
                 <article className="taskcontainer-content taskcontainer-content--right">
                 {recentlyDone !== true ? <p>Steht an:</p> : <p>Geputzt am:</p>}
                 <p>{date}</p>
-                <p>Wer?</p>
-                <div className="task--inputName">
-                    <label htmlFor="responsible"></label>
+                {recentlyDone !== true ? <p>Wer?</p> : <p>Geputzt von:</p>}
+                {recentlyDone !== true ? <div className="task--inputName">
+                    <label htmlFor="responsible"/>
                     <select name="responsible" id="responsible">
                         <option value="responsible">{responsible}</option>
                         {responsible === "Philipp" ? <option value="anita">Anita</option> : <option value="philipp">Philipp</option>}
                     </select>
-                    </div>
+                    </div> :
+                    <div><p>{responsible}</p></div>}
                     {recentlyDone === false ? <input type="checkbox" name="checkbox" id="checkbox" className="taskcontainer--done"  onClick={toggleActive}></input>  : <></>}
                 </article>
         </section>
