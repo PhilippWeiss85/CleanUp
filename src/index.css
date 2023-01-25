@@ -1,6 +1,11 @@
 :root {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
+
+  --text-primary: #D8E8F2;
+  --text-secondary: #0f0f0f;
+  --background-primary: #04C4D9;
+  --background-secondary:#0367A6;
 }
 
 * {
@@ -14,7 +19,22 @@ body {
 }
 
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary)
+}
 
+p {
+  color: var(--text-secondary)
+}
+
+section {
+  background-color: var(--background-primary)
+}
 
 a {
   font-weight: 500;

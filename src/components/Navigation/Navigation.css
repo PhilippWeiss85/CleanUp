@@ -1,65 +1,52 @@
 nav {
     border-top: 3px solid black;
     margin-top: 120px;
-    height: 80px;
+    height: 60px;
     position: fixed;
     width: 100%;
     bottom: 0;
 }
 .navmenu {
-    background-color: lightgrey;
-}
-
-.navmenu ul {
-    list-style: none;
+    background-color: var(--background-secondary);
     display: flex;
-    justify-content: space-around;
-    padding: 0;
-    margin: 0;
-
+    align-items: center;
 }
 
 .navitem {
     display: flex;
-    height: 77px;
-    width: 100%;
-    text-align: center;
+    height: 50%;
+    width: 50%;
     justify-content: center;
     align-items: center;
 }
 
 .navitem > a {
-    padding: 25px;
+    padding:0;
     font-size: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: red;
+    color: var(--text-primary);
 }
 
 .navitem--container {
     position: absolute;
     border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
-    background-color: red;
+    width: 4rem;
+    height: 4rem;
+    background-color: white;
+    border: 2px solid var(--text-primary);
     z-index: 100;
-    bottom: 40px;
-    left: 50vw / 2
+    bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .navitem--text {
-    height: 5rem;
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 3rem;
     cursor: pointer;
-}
-
-.navitem--separator {
-    border: 1px solid black;
 }
